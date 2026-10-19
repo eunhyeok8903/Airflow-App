@@ -6,7 +6,7 @@ from airflow.providers.standard.operators.bash import BashOperator
 from airflow.sdk import DAG, chain
 
 with DAG(
-    dag_id="dags_bash_operator", #dag_id 랑 dag 파일명 일치하게
+    dag_id="dags_conn_test.py", #dag_id 랑 dag 파일명 일치하게
     schedule=None,
     # start_date=pendulum.datetime(2021, 1, 1, tz="UTC"), ##이건 세계 시간 
      start_date=pendulum.datetime(2026, 10, 1, tz="Asia/Seoul"),
