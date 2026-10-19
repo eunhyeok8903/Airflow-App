@@ -1,0 +1,44 @@
+from __future__ import annotations
+
+import pendulum
+
+from airflow.providers.standard.operators.bash import BashOperator
+from airflow.sdk import DAG, chain
+
+with DAG(
+    dag_id="dags_bash_operator", #dag_id 랑 dag 파일명 일치하게
+    schedule=None,
+    # start_date=pendulum.datetime(2021, 1, 1, tz="UTC"), ##이건 세계 시간 
+     start_date=pendulum.datetime(2026, 10, 1, tz="Asia/Seoul"),
+    catchup=False,
+    tags=["example", "example2", "example3"],
+) as dag:
+
+    t1 = EmptyOperator(
+        task_id = "t1"
+    )
+    t2 = EmptyOperator(
+        task_id = "t2"
+    )
+    t3 = EmptyOperator(
+        task_id = "t3"
+    )
+    t4 = EmptyOperator(
+        task_id = "t4"
+    )
+    t5 = EmptyOperator(
+        task_id = "t5"
+    )
+    t6 = EmptyOperator(
+        task_id = "t6"
+    )
+    t7 = EmptyOperator(
+        task_id = "t7"
+    )
+    t8 = EmptyOperator(
+        task_id = "t8"
+    )
+
+    t1 >> [t2,t3] >> t4
+    t5 >> t4
+    [t4,t7] >> t6 >> t8
